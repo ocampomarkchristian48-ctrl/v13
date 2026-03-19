@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mind Logic</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sky3d">
+<div class="sun"></div>
+
+<div class="cloud layer1" style="top:120px"></div>
+<div class="cloud layer1" style="top:180px"></div>
+
+<div class="cloud layer2" style="top:300px"></div>
+<div class="cloud layer2" style="top:360px"></div>
+
+<div class="cloud layer3" style="top:500px"></div>
+<div class="cloud layer3" style="top:560px"></div>
+
+<div class="bird bird1">🐦</div>
+<div class="bird bird2">🐦</div>
+</div>
+
+<h1 class="title">Mind Logic</h1>
+
+<!-- START -->
+<div id="startScreen" class="card">
+<h2>🧠 Mind Logic</h2>
+<p>Enter Your Name</p>
+<input id="playerName" placeholder="Your name">
+<button onclick="startGame()">Start Game</button>
+</div>
+
+<!-- DESCRIPTION -->
+<div id="descScreen" class="hidden descPage">
+<h1 class="descTitle">Description</h1>
+
+<p class="descText">
+This web game is an interactive learning tool that challenges players with logic-based questions.
+</p>
+
+<p class="descText">
+It improves critical thinking and decision making.
+</p>
+
+<p class="descText">
+You must reach <b>70%</b> score to pass the challenge.
+</p>
+
+<button onclick="startLevel1()">Play</button>
+</div>
+
+<!-- QUIZ (HIDDEN SA START) -->
+<div id="quizScreen" class="hidden gameUI">
+
+<div class="questionBox">
+<div class="gameTop">
+<span id="progressText">Question 1 / 10</span>
+<span>Score: <span id="score">0</span></span>
+</div>
+
+<h2 id="question"></h2>
+
+<div class="progressBar">
+<div id="progressFill" class="progressFill"></div>
+</div>
+</div>
+
+<div class="choicesBox">
+<div id="answers" class="answers"></div>
+
+<button id="nextBtn" onclick="nextQuestion()" class="hidden">
+Next Question
+</button>
+</div>
+
+</div>
+
+<!-- RESULT -->
+<div id="resultScreen" class="hidden resultBox">
+<h2 id="resultTitle"></h2>
+<p id="resultScore"></p>
+
+<button id="retryBtn" onclick="retryGame()" class="hidden">
+Try Again
+</button>
+
+<button id="continueBtn" class="hidden">
+Continue
+</button>
+
+<h3>Scoreboard</h3>
+<div id="scoreboard"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
