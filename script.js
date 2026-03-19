@@ -24,21 +24,28 @@ document.getElementById("score").innerText=0;
 document.getElementById("startScreen").classList.add("hidden");
 document.getElementById("descScreen").classList.remove("hidden");
 
-// siguradong naka hide quiz
-document.getElementById("quizScreen").classList.add("hidden");
+// 🔥 FORCE HIDE QUIZ
+let quiz=document.getElementById("quizScreen");
+quiz.classList.add("hidden");
+quiz.style.display="none";
 }
 
 function startLevel1(){
 
 let name=document.getElementById("playerName").value.trim();
+
 if(name===""){
 alert("Enter your name first!");
 return;
 }
 
-// show quiz
+// hide description
 document.getElementById("descScreen").classList.add("hidden");
-document.getElementById("quizScreen").classList.remove("hidden");
+
+// 🔥 SHOW QUIZ ONLY HERE
+let quiz=document.getElementById("quizScreen");
+quiz.classList.remove("hidden");
+quiz.style.display="flex";
 
 showQuestion();
 }
@@ -46,6 +53,7 @@ showQuestion();
 function showQuestion(){
 
 let q=questions[currentQuestion];
+
 document.getElementById("question").innerText=q.question;
 
 let answersDiv=document.getElementById("answers");
@@ -63,6 +71,7 @@ selectAnswer(btn,index);
 answersDiv.appendChild(btn);
 });
 
+// 🔥 SET TEXT ONLY WHEN GAME STARTS
 document.getElementById("progressText").innerText=
 "Question "+(currentQuestion+1)+" / "+questions.length;
 
@@ -92,6 +101,7 @@ document.getElementById("nextBtn").classList.remove("hidden");
 function nextQuestion(){
 
 currentQuestion++;
+
 document.getElementById("nextBtn").classList.add("hidden");
 
 if(currentQuestion<questions.length){
@@ -125,18 +135,22 @@ loadScoreboard();
 function saveScore(percent){
 
 let name=document.getElementById("playerName").value;
+
 let scores=JSON.parse(localStorage.getItem("scores"))||[];
 
 scores.push({name:name,percent:percent});
+
 localStorage.setItem("scores",JSON.stringify(scores));
 }
 
 function loadScoreboard(){
 
 let board=document.getElementById("scoreboard");
+
 board.innerHTML="";
 
 let scores=JSON.parse(localStorage.getItem("scores"))||[];
+
 scores.reverse();
 
 scores.forEach(s=>{
